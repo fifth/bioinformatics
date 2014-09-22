@@ -1,0 +1,28 @@
+<html>
+	<head></head>
+	<body>
+		<div id="front">
+			<script type="text/javascript">
+				function deal(){
+					var v = new Array();
+					v[0]='A';
+					v[1]='T';
+					v[2]='G';
+					v[3]='C';
+					print='';
+					len = document.getElementById('len').value;
+					for (var i = 0; i < len; i++) {
+						print+=v[Math.floor(Math.random()*4)];
+						if ((i+1)%100==0) {print+='<br/>'};
+					};
+					// alert(print);
+					document.getElementById('result').innerHTML=print;
+				}
+			</script>
+			<p>random DNA serquence produce:</p>
+			enter the length you want<input type="text" id="len" />
+			<input type="button" value="确定" onclick="deal()" />
+			<p id='result'></p>
+		</div>
+	</body>
+</html>
