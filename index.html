@@ -23,14 +23,16 @@
 						print+=v[Math.floor(Math.random()*4)];
 						// if ((i+1)%100==0) {print+='<br/>'};
 					};
-					// alert(print);
 					document.getElementById('result').innerHTML=print;
+				}
+				function CopyValue(obj) {
+  					window.clipboardData.setData('text', document.getElementById(obj).innerHTML);   
 				}
 			</script>
 			<p>random DNA serquence produce:</p>
 			enter the length you want<input type="text" id="len" />
 			<input type="button" value="确定" onclick="random_senquence()" />
-			<!-- <input type="button" value="复制到剪贴板" onclick="CopyValue('result')" /> -->
+			<input type="button" value="复制到剪贴板if in IE" onclick="CopyValue('result')" />
 			<p id='result'style="word-break:break-all;"></p>
 		</div>
 		<script type="text/javascript">
