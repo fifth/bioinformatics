@@ -1,9 +1,17 @@
 <html>
-	<head></head>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<style type="text/css">
+		#left, #right {
+			width: 50%;
+			/*height: 100%;*/
+		}
+		</style>
+	</head>
 	<body>
-		<div id="front">
+		<div id="left">
 			<script type="text/javascript">
-				function deal(){
+				function random_senquence(){
 					var v = new Array();
 					v[0]='A';
 					v[1]='T';
@@ -13,7 +21,7 @@
 					len = document.getElementById('len').value;
 					for (var i = 0; i < len; i++) {
 						print+=v[Math.floor(Math.random()*4)];
-						if ((i+1)%100==0) {print+='<br/>'};
+						// if ((i+1)%100==0) {print+='<br/>'};
 					};
 					// alert(print);
 					document.getElementById('result').innerHTML=print;
@@ -21,8 +29,29 @@
 			</script>
 			<p>random DNA serquence produce:</p>
 			enter the length you want<input type="text" id="len" />
-			<input type="button" value="确定" onclick="deal()" />
-			<p id='result'></p>
+			<input type="button" value="确定" onclick="random_senquence()" />
+			<!-- <input type="button" value="复制到剪贴板" onclick="CopyValue('result')" /> -->
+			<p id='result'style="word-break:break-all;"></p>
+		</div>
+		<script type="text/javascript">
+			function send_quest(){
+				recived=document.getElementById('recive').value;
+				var xmlhttp;
+				xmlhttp=new XMLHttpRequest();
+				xmlhttp.onreadystatechange=function(){
+					if (xmlhttp.readyState==4 && xmlhttp.status==200){
+						document.getElementById("answer").innerHTML=xmlhttp.responseText;
+					}
+				}	
+				xmlhttp.open("POST","msatr.php",true);
+				xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+				xmlhttp.send("senquence="+recived);
+			}
+		</script>
+		<div id="right">
+			<textarea placeholder="enter the senquences you wnat to analyse" id="recive" style="width: 300px; height:300px;"></textarea><br />
+			<input type="button" value="提交" onclick="send_quest()" />
+			<p id="answer"></p>
 		</div>
 	</body>
 </html>

@@ -7,7 +7,8 @@
 	// $r: gate value
 	// $seq='CGCAGCGTGGCTGGAGAAACGTTGTCAAAAAGACGAGTCGCCACTCACTGGGAATAGTCGGCAAGCATCGTACACAATGTTTAACTCTCAGTCACCGTTCCGACTCGCGGAGCCGTGTATCGG';
 	// $seq=str_split('CGCAGCGTGGCTGGAGAAACGTTGTCAAAAAGACGAGTCGCCACTCACTGGGAATAGTCGGCAAGCATCGTACACAATGTTTAACTCTCAGTCACCGTTCCGACTCGCGGAGCCGTGTATCGG');
-	$seq=str_split('ACCGGGCGTTGAGTTGCCTGACTCAGTCGCGTCTGATAGTCTGATAGAGTAGGACGCACCTGTCTGAATAGCGAGACAACTAGAGCCAAACCTCAGCTAG');
+	// $seq=str_split('ACCGGGCGTTGAGTTGCCTGACTCAGTCGCGTCTGATAGTCTGATAGAGTAGGACGCACCTGTCTGAATAGCGAGACAACTAGAGCCAAACCTCAGCTAG');
+	$seq=str_split($_POST["senquence"]);
 	$min_len=2;
 	$max_len=50;
 	$p=2;
@@ -97,9 +98,10 @@
 		// 	echo "<br/>";
 		// }
 	}	
-		print_r($total);
-		for ($i=0; $i<$total; $i++) {
-			print_r("<br/>");
-			print_r(json_encode($msatr[$i]));
-		}
+		// print_r($total);
+		// for ($i=0; $i<$total; $i++) {
+		// 	print_r("<br/>");
+		// 	print_r(json_encode($msatr[$i]));
+		// }
+	echo json_encode($msatr);
 ?>
