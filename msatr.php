@@ -9,10 +9,11 @@
 	// $seq=str_split('CGCAGCGTGGCTGGAGAAACGTTGTCAAAAAGACGAGTCGCCACTCACTGGGAATAGTCGGCAAGCATCGTACACAATGTTTAACTCTCAGTCACCGTTCCGACTCGCGGAGCCGTGTATCGG');
 	// $seq=str_split('ACCGGGCGTTGAGTTGCCTGACTCAGTCGCGTCTGATAGTCTGATAGAGTAGGACGCACCTGTCTGAATAGCGAGACAACTAGAGCCAAACCTCAGCTAG');
 	$seq=str_split($_POST["senquence"]);
-	$min_len=2;
-	$max_len=50;
-	$p=2;
-	$r=0.5;
+	$min_len=$_POST["min_len"];
+	$max_len=$_POST["max_len"];
+	$p=$_POST["repeat"];
+	$r=$_POST["r"];
+	// $r=0.5;
 	// input over
 	$stroage=array();
 	$msatr=array();

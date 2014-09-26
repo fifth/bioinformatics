@@ -32,12 +32,16 @@
 			<p>random DNA serquence produce:</p>
 			enter the length you want<input type="text" id="len" />
 			<input type="button" value="确定" onclick="random_senquence()" />
-			<input type="button" value="复制到剪贴板if in IE" onclick="CopyValue('result')" />
+			<input type="button" value="复制到剪贴板 if in IE" onclick="CopyValue('result')" />
 			<p id='result'style="word-break:break-all;"></p>
 		</div>
 		<script type="text/javascript">
 			function send_quest(){
-				recived=document.getElementById('recive').value;
+				senquence=document.getElementById('senquence').value;
+				min_len=document.getElementById('min_len').value;
+				max_len=document.getElementById('max_len').value;
+				repeat=document.getElementById('repeat').value;
+				r=document.getElementById('r').value;
 				var xmlhttp;
 				xmlhttp=new XMLHttpRequest();
 				xmlhttp.onreadystatechange=function(){
@@ -47,11 +51,16 @@
 				}	
 				xmlhttp.open("POST","msatr.php",true);
 				xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-				xmlhttp.send("senquence="+recived);
+				xmlhttp.send("senquence="+senquence+"&min_len="+min_len+"&max_len="+max_len+"&repeat="+repeat+"&r="+r);
 			}
 		</script>
 		<div id="right">
-			<textarea placeholder="enter the senquences you wnat to analyse" id="recive" style="width: 300px; height:300px;"></textarea><br />
+			<textarea placeholder="enter the senquences you wnat to analyse" id="senquence" style="width: 300px; height:300px;"></textarea><br />
+			<input type="text" id="min_len" placeholder="set the min length of repeat senquence" /><br />
+			<input type="text" id="max_len" placeholder="set the max length of repeat senquence" /><br />
+			<input type="text" id="repeat" placeholder="set the least repeat" /><br />
+			<input type="text" id="r" placeholder="set the r value" />
+
 			<input type="button" value="提交" onclick="send_quest()" />
 			<p id="answer"></p>
 		</div>
