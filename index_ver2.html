@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="./main.css">
+		<script type="text/javascript" src="jquery-2.1.1.js"></script>
+		<script type="text/javascript" src="jquery.scrollTo.js"></script>
+		<script type="text/javascript" src="main.js"></script>
+	</head>
+	<body>
+		<div id="step_input" class="steps" style="top: 0%; background-color: #E893AA;">
+			<p style="margin-top: 10%; margin-bottom: 5%;">
+				This site is used to analyse the repeat of a certain DNA senquence and you can custom the parameters you want. Varieties of input and output format is supported(under developement).<br />
+				The program uses an algorithm called MSATR. <a href="" onclick="window.open('http://cpfd.cnki.com.cn/Article/CPFDTOTAL-ZJSS200810002033.htm'); return false;">Here is the paper on cnki.</a><br />
+				More definition and analyse algorithms will be avalible afterwards.
+			</p>
+			<p>
+				Now, give me the DNA senquence you want to analyse or just <a href="" onclick="random_senquence(); return false;">produce a random senquence by program</a>.
+			</p>
+			<textarea placeholder="enter the senquences you wnat to analyse" id="senquence" style="width: 80%; height: 30%; font-size:1.2em"></textarea><br />
+			<input type="button" class="button" value="upload a file(unavalibe)" style="margin-left: 10%" onclick="scroll_to('1')" />
+			<input type="button" class="button" value="next step: custom the parameters" onclick="scroll_to('1')" />
+		</div>
+		<div id="step_param" class="steps" style="top: 100%; background-color: #FFD2A2;">
+			<p style="margin-top: 5%; margin-bottom: 5%;">
+				Now you can custom parameters including minimun repeat length, maximun repeat length, least repeat times and threshold value.
+			</p>
+			<input type="text" id="min_len" class="text" placeholder="set the min length of repeat senquence"/>
+			<br />
+			<input type="text" id="max_len" class="text" placeholder="set the max length of repeat senquence"/>
+			<br />
+			<input type="text" id="repeat" class="text" placeholder="set the least repeat"/>
+			<br />
+			<input type="text" id="r" class="text" placeholder="set the threshold value"/>
+			<br />
+			<input type="button" class="button" value="former step: input the senquence" style="margin-left: 10%" onclick="scroll_to('0')" />
+			<input type="button" class="button" value="next step: custom the output" onclick="scroll_to('2')" />
+		</div>
+		<div id="step_output" class="steps" style="top: 200%; background-color: #6A94A3;">
+			<p style="margin-top: 5%; margin-bottom: 5%;">
+				Here you can custom the output format you want(unavalibe).
+			</p>
+			<input type="button" class="button" style="margin-left: 10%" value="former step: custom the parameters" onclick="scroll_to('1')" />
+			<input type="button" class="button" value="next step: get the answer" onclick="send_quest(); scroll_to('3')" />
+		</div>
+		<div id="step_answer" class="steps" style="top: 300%; position: absolute; background-color: #B2E28F;">
+			<input type="button" class="button" style="margin-left: 10%" value="export to file" />
+			<input type="button" class="button" value="back to first step" onclick="scroll_to('0')" />
+			<p id="answer" style="margin-top: 5%; margin-bottom: 5%; word-break:break-all;"></p>
+		</div>
+		<div id="guide" class="guide">
+			<div class="guide_step" id="guide1" onclick="scroll_to('0')">1</div>
+			<div class="guide_step" id="guide2" onclick="scroll_to('1')">2</div>
+			<div class="guide_step" id="guide3" onclick="scroll_to('2')">3</div>
+			<div class="guide_step" id="guide4" onclick="scroll_to('3')">4</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,65 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	transition-duration: 0.5s;
+	-moz-transition-duration: 0.5s; /* Firefox 4 */
+	-webkit-transition-duration: 0.5s; /* Safari 和 Chrome */
+	-o-transition-duration: 0.5s; /* Opera */
+	font-family: "微软雅黑"
+}
+.steps {
+	width: 90%;
+	height: 100%;
+	position: absolute;
+}
+.guide {
+	height: 100%;
+	width: 10%;
+	position: fixed;
+	right: 0px;
+}
+.guide_step {
+	font-size: 8em;
+	height: 25%;
+	margin: auto;
+	color: white;
+	cursor: pointer;
+	text-align: center;
+}
+#guide1 {
+	background-color: #E893AA;
+}
+#guide2 {
+	background-color: #FFD2A2;
+}
+#guide3 {
+	background-color: #6A94A3;
+}
+#guide4 {
+	background-color: #B2E28F;
+}
+#guide1:hover, #guide2:hover, #guide3:hover, #guide4:hover {
+	background-color: #FFFFFF;
+	color: black;
+}
+.steps {
+	font-size: 1em;
+}
+.steps p, .steps textarea {
+	margin-right: 10%;
+	margin-left: 10%;
+}
+.button {
+	font-size: 1em;
+	margin-top: 2%;
+	width: 40%;
+	height: 5%;
+}
+.text {
+	font-size: 2em;
+	width: 80%;
+	height: 10%;
+	margin-right: 10%;
+	margin-bottom: 1%; 
+	margin-left: 10%;
+}
