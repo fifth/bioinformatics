@@ -34,6 +34,8 @@ function send_quest(){
 				answer+="<br />";
 			}
 			document.getElementById("answer").innerHTML=answer;
+			$('#step_answer input').css('height', $('#step_answer input').css('height'));
+			document.getElementById("step_answer").style.height=$('#answer').css('height').slice(0, -2)*1.0+$('#answer').css('margin-top').slice(0, -2)*1.0+$('#answer').css('margin-bottom').slice(0, -2)*1.0+$('#step_answer input').css('margin-top').slice(0, -2)*1.0+$('#step_answer input').css('height').slice(0, -2)*1.0;
 		}
 	}	
 	xmlhttp.open("POST","msatr.php",true);

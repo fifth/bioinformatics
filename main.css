@@ -10,6 +10,7 @@
 .steps {
 	width: 90%;
 	height: 100%;
+	font-size: 1em;
 	position: absolute;
 }
 .guide {
@@ -41,9 +42,6 @@
 #guide1:hover, #guide2:hover, #guide3:hover, #guide4:hover {
 	background-color: #FFFFFF;
 	color: black;
-}
-.steps {
-	font-size: 1em;
 }
 .steps p, .steps textarea {
 	margin-right: 10%;
