@@ -13,7 +13,7 @@ function random_senquence(){
 	document.getElementById('senquence').value=print;
 }
 function send_quest(){
-	document.getElementById('answer').innerHTML="<img src='./waiting.gif' /><br />plsase waiting for the results"
+	document.getElementById('answer').innerHTML="<img src='./waiting.gif' /><br />plsase waiting for the results";
 	senquence=document.getElementById('senquence').value;
 	min_len=document.getElementById('min_len').value;
 	max_len=document.getElementById('max_len').value;
