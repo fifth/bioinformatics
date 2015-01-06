@@ -7,6 +7,9 @@
 	-o-transition-duration: 0.5s; /* Opera */
 	font-family: "微软雅黑"
 }
+a {
+	text-decoration: none;
+}
 .steps {
 	width: 90%;
 	height: 100%;
