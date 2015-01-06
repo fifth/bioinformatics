@@ -39,7 +39,7 @@ function send_quest(){
 			document.getElementById("step_answer").style.height=$('#answer').css('height').slice(0, -2)*1.0+$('#answer').css('margin-top').slice(0, -2)*1.0+$('#answer').css('margin-bottom').slice(0, -2)*1.0+$('#step_answer input').css('margin-top').slice(0, -2)*1.0+$('#step_answer input').css('height').slice(0, -2)*1.0;
 		}
 	}	
-	xmlhttp.open("POST","msatr.php",true);
+	xmlhttp.open("POST","http://fifth26.com/bioinformatics/msatr.php",true);
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	xmlhttp.send("senquence="+senquence+"&min_len="+min_len+"&max_len="+max_len+"&repeat="+repeat+"&r="+r);
 }
