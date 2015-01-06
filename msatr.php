@@ -13,7 +13,6 @@
 	$max_len=$_POST["max_len"];
 	$p=$_POST["repeat"];
 	$r=$_POST["r"];
-	// $r=0.5;
 	// input over
 	$stroage=array();
 	$msatr=array();
@@ -23,7 +22,7 @@
 
 	function compare($compare, $r) {
 	// compare the two senquences 
-		// $sample: senquence used to be compared
+		// $stroage: senquence used to be compared
 		// $compare: senquence used to compare
 		// $r: gate value
 		global $stroage;

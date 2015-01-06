@@ -2,84 +2,36 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 		<style type="text/css">
-		* {
-			margin: 0px;
-			padding: 0px;
-			/*border: 0px;*/
-		}
-		#left, #right {
-			width: 50%;
-			height: 100%;
-			position: absolute;
-		}
-		#right {
-			left: 50%;
-		}
+			* {
+				margin: 0px;
+				transition-duration: 0.5s;
+				font-family: "Microsoft YaHei";
+			}
+			.top-cover {
+				width: 50%;
+				height: 50%;
+				float: left;
+				background-color: #DDDDDD;
+				font-size: 5em;
+				text-align: center;
+				color: #DDDDDD;
+				vertical-align: middle;
+				line-height: 5em;
+				cursor: pointer;
+			}
+			.top-cover:hover {
+				background-color: #FFFFFF;
+				color: #123456;
+			}
+			#right-up {
+				line-height: 1em;
+			}
 		</style>
 	</head>
 	<body>
-		<script type="text/javascript">
-			window.location.href="./index_ver2.html";
-		</script>
-		<div id="left">
-			<script type="text/javascript">
-				function random_senquence(){
-					var v = new Array();
-					v[0]='A';
-					v[1]='T';
-					v[2]='G';
-					v[3]='C';
-					print='';
-					len = document.getElementById('len').value;
-					for (var i = 0; i < len; i++) {
-						print+=v[Math.floor(Math.random()*4)];
-						// if ((i+1)%100==0) {print+='<br/>'};
-					};
-					document.getElementById('result').innerHTML=print;
-				}
-				function CopyValue() {
-  					window.clipboardData.setData('text', document.getElementById('result').innerHTML);   
-				}
-				function move() {
-					document.getElementById('senquence').value=document.getElementById('result').innerHTML;
-				}
-			</script>
-			<p>random DNA serquence produce:</p>
-			enter the length you want<input type="text" id="len" />
-			<br />
-			<input type="button" value="确定" onclick="random_senquence()" />
-			<input type="button" value="复制到剪贴板 if in IE" onclick="CopyValue()" />
-			<input type="button" value="添加到操作框" onclick="move()" />
-			<p id='result'style="word-break:break-all;"></p>
-		</div>
-		<script type="text/javascript">
-			function send_quest(){
-				senquence=document.getElementById('senquence').value;
-				min_len=document.getElementById('min_len').value;
-				max_len=document.getElementById('max_len').value;
-				repeat=document.getElementById('repeat').value;
-				r=document.getElementById('r').value;
-				var xmlhttp;
-				xmlhttp=new XMLHttpRequest();
-				xmlhttp.onreadystatechange=function(){
-					if (xmlhttp.readyState==4 && xmlhttp.status==200){
-						document.getElementById("answer").innerHTML=xmlhttp.responseText;
-					}
-				}	
-				xmlhttp.open("POST","msatr.php",true);
-				xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-				xmlhttp.send("senquence="+senquence+"&min_len="+min_len+"&max_len="+max_len+"&repeat="+repeat+"&r="+r);
-			}
-		</script>
-		<div id="right">
-			<textarea placeholder="enter the senquences you wnat to analyse" id="senquence" style="width: 300px; height:300px;"></textarea><br />
-			<input type="text" id="min_len" placeholder="set the min length of repeat senquence" style="width: 300px;"/><br />
-			<input type="text" id="max_len" placeholder="set the max length of repeat senquence" style="width: 300px;"/><br />
-			<input type="text" id="repeat" placeholder="set the least repeat" style="width: 300px;"/><br />
-			<input type="text" id="r" placeholder="set the r value" style="width: 300px;"/>
-			<br />
-			<input type="button" value="提交" onclick="send_quest()" />
-			<p id="answer"></p>
-		</div>
+		<a href="./index_ver2.html"><div id="right-up" class="top-cover">sequences<br/>repeat<br/>counter</div></a>
+		<div id="left-up" class="top-cover">translations</div>
+		<div id="right-down" class="top-cover">questions</div>
+		<div id="left-down" class="top-cover">about</div>
 	</body>
 </html>
