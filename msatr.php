@@ -1,5 +1,6 @@
 <?php
 	header("Access-Control-Allow-Origin: *");
+	error_reporting(E_ALL & ~ E_NOTICE);
 	// input format:
 	// $seq: DNA senquence
 	// $min_len: min length of the repeat
