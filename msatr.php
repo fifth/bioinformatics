@@ -11,19 +11,19 @@
 	// $seq=str_split('CGCAGCGTGGCTGGAGAAACGTTGTCAAAAAGACGAGTCGCCACTCACTGGGAATAGTCGGCAAGCATCGTACACAATGTTTAACTCTCAGTCACCGTTCCGACTCGCGGAGCCGTGTATCGG');
 	// $seq=str_split('ACCGGGCGTTGAGTTGCCTGACTCAGTCGCGTCTGATAGTCTGATAGAGTAGGACGCACCTGTCTGAATAGCGAGACAACTAGAGCCAAACCTCAGCTAG');
 	
-	// $seq=str_split($_POST["senquence"]);
-	// $min_len=$_POST["min_len"];
-	// $max_len=$_POST["max_len"];
-	// $p=$_POST["repeat"];
-	// $r=$_POST["r"];
+	$seq=str_split($_POST["senquence"]);
+	$min_len=$_POST["min_len"];
+	$max_len=$_POST["max_len"];
+	$p=$_POST["repeat"];
+	$r=$_POST["r"];
 	
 	// input over
 	//sample input
-	$seq=str_split('CAAAAAAAAAAC');
-	$min_len=3;
-	$max_len=4;
-	$p=2;
-	$r=0.5;
+	// $seq=str_split('CAAA');
+	// $min_len=2;
+	// $max_len=2;
+	// $p=2;
+	// $r=0.5;
 	//sample input over
 
 	$stroage=array();
@@ -77,7 +77,7 @@
 		$repeat=1;
 	}
 	function checkback($test, $p, $r) {
-		$len=count($p);
+		$len=count($test);
 		$count=0;
 		for ($i=0; $i<$len; $i++) {
 			if ($test[$i]==$p[$i]) {
@@ -95,6 +95,9 @@
 		// divide the senquence 
 		for ($i=0; $i<$rep; $i++) { 
 			$array[$i]=array_chunk(array_slice($seq, $i), $rep);
+			if (count($array[$i][count($array[$i])-1])!=$rep) {
+				array_pop($array[$i]);
+			}
 		}
 		// divide over
 
@@ -117,7 +120,7 @@
 
 					$temp=$array[$i][$tip];
 					// print_r(checkback($array[$i][$tip-1], $temp, $r));
-					while (checkback($array[$i][$tip-1], $temp, $r)) {
+					while (($tip>=1)&&(checkback($array[$i][$tip-1], $temp, $r))) {
 						$tip-=1;
 					}
 					$key_of_buffer=$tip;

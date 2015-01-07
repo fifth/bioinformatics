@@ -10,6 +10,9 @@
 a {
 	text-decoration: none;
 }
+textarea {
+	text-transform: uppercase;
+}
 .steps {
 	width: 90%;
 	height: 100%;
