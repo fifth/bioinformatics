@@ -12,6 +12,10 @@ function random_senquence(){
 	};
 	document.getElementById('senquence').value=print;
 }
+// function devide(str, len){
+
+// 	return string;
+// }
 function send_quest(){
 	document.getElementById('answer').innerHTML="<img src='./waiting.gif' /><br />plsase waiting for the results";
 	senquence=document.getElementById('senquence').value;
@@ -27,7 +31,15 @@ function send_quest(){
 			var list=eval('('+backup+')');
 			answer='senquence|repeat|length<br />';
 			for (key in list) {
-				answer+=list[key]['senquence'];
+				// answer+=list[key]['senquence'];
+				//format the style of the senquence
+				answer+="[";
+				answer+=list[key]['senquence'].substring(0,list[key]['senquence'].indexOf(','));
+				answer+=']';
+				answer+=list[key]['senquence'].substring(list[key]['senquence'].indexOf(',')+1, list[key]['senquence'].lastIndexOf(','));
+				answer+='[';
+				answer+=list[key]['senquence'].substring(list[key]['senquence'].lastIndexOf(',')+1);
+				answer+=']';
 				answer+="|";
 				answer+=list[key]['repeat'];
 				answer+="|";

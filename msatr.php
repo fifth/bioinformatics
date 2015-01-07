@@ -10,12 +10,22 @@
 	// $seq='CGCAGCGTGGCTGGAGAAACGTTGTCAAAAAGACGAGTCGCCACTCACTGGGAATAGTCGGCAAGCATCGTACACAATGTTTAACTCTCAGTCACCGTTCCGACTCGCGGAGCCGTGTATCGG';
 	// $seq=str_split('CGCAGCGTGGCTGGAGAAACGTTGTCAAAAAGACGAGTCGCCACTCACTGGGAATAGTCGGCAAGCATCGTACACAATGTTTAACTCTCAGTCACCGTTCCGACTCGCGGAGCCGTGTATCGG');
 	// $seq=str_split('ACCGGGCGTTGAGTTGCCTGACTCAGTCGCGTCTGATAGTCTGATAGAGTAGGACGCACCTGTCTGAATAGCGAGACAACTAGAGCCAAACCTCAGCTAG');
+	
 	$seq=str_split($_POST["senquence"]);
 	$min_len=$_POST["min_len"];
 	$max_len=$_POST["max_len"];
 	$p=$_POST["repeat"];
 	$r=$_POST["r"];
+	
 	// input over
+	//sample input
+	// $seq=str_split('CAAAAAAAAAAC');
+	// $min_len=3;
+	// $max_len=3;
+	// $p=2;
+	// $r=0.5;
+	//sample input over
+
 	$stroage=array();
 	$msatr=array();
 	$total=0;
@@ -43,22 +53,42 @@
 		return true;
 	}
 
-	function check($p) {
+	function check($p, $i) {
 	// check the repeat times of the buffer
 		// $target
 		// $len
 		// $p
+		// $i position adjustment
 		global $stroage, $msatr, $total, $repeat;
+		global $key_of_buffer;
 		if ($repeat>=2) {
 			if ($repeat>=$p) {
 				$msatr[$total]['senquence']=implode($stroage);
 				$msatr[$total]['repeat']=$repeat;
 				$msatr[$total]['length']=strlen($msatr[$total]['senquence'])/$repeat;
+				$head=$key_of_buffer*$msatr[$total]['length']+$i;
+				$tail=strlen($msatr[$total]['senquence'])+$head-1;
+				$msatr[$total]['senquence']=chunk_split($msatr[$total]['senquence'], $msatr[$total]['length'], ',');
+				$msatr[$total]['senquence']=$head.','.$msatr[$total]['senquence'].$tail;
 				$total++;
 			}
 		} 
 		$stroage=array();
 		$repeat=1;
+	}
+	function checkback($test, $p, $r) {
+		$len=count($test);
+		$count=0;
+		for ($i=0; $i<$len; $i++) {
+			if ($test[$i]==$p[$i]) {
+				$count++;
+			}
+		}
+		if ($count/$len<$r) {
+			return false;
+		} else {
+			return true;	
+		}
 	}
 
 	for ($rep=$min_len; $rep<=$max_len; $rep++) {
@@ -79,14 +109,24 @@
 					$stroage=array_merge($stroage, $array[$i][$tip]);
 					$repeat++;
 				} else {
-					check($p);
-					$buffer=$array[$i][$tip];
-					$stroage=$buffer;
+					check($p, $i);
+					
+					// $buffer=$array[$i][$tip];
+					// $stroage=$buffer;
+					// $key_of_buffer=$tip;
+
+					$temp=$array[$i][$tip];
+					// print_r(checkback($array[$i][$tip-1], $temp, $r));
+					while (checkback($array[$i][$tip-1], $temp, $r)) {
+						$tip-=1;
+					}
 					$key_of_buffer=$tip;
+					$buffer=$array[$i][$key_of_buffer];
+					$stroage=$buffer;
 				}
 				$tip+=1;
 			}
-			check($p);
+			check($p, $i);
 		}
 
 		// // check the devision
