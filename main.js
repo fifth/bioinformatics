@@ -19,6 +19,15 @@ function random_senquence(){
 function send_quest(){
 	document.getElementById('answer').innerHTML="<img src='./waiting.gif' /><br />plsase waiting for the results";
 	senquence=document.getElementById('senquence').value;
+
+	if (senquence.search(/[~ACGT]/)) {
+		answer="INPUT ERROR!<br/>You are entering a DNA senquence, aren't you?";
+		document.getElementById("answer").innerHTML=answer;
+		$('#step_answer input').css('height', $('#step_answer input').css('height'));
+		document.getElementById("step_answer").style.height=$('#answer').css('height').slice(0, -2)*1.0+$('#answer').css('margin-top').slice(0, -2)*1.0+$('#answer').css('margin-bottom').slice(0, -2)*1.0+$('#step_answer input').css('margin-top').slice(0, -2)*1.0+$('#step_answer input').css('height').slice(0, -2)*1.0;
+		return false;
+	}
+
 	min_len=document.getElementById('min_len').value;
 	max_len=document.getElementById('max_len').value;
 	repeat=document.getElementById('repeat').value;

@@ -11,19 +11,19 @@
 	// $seq=str_split('CGCAGCGTGGCTGGAGAAACGTTGTCAAAAAGACGAGTCGCCACTCACTGGGAATAGTCGGCAAGCATCGTACACAATGTTTAACTCTCAGTCACCGTTCCGACTCGCGGAGCCGTGTATCGG');
 	// $seq=str_split('ACCGGGCGTTGAGTTGCCTGACTCAGTCGCGTCTGATAGTCTGATAGAGTAGGACGCACCTGTCTGAATAGCGAGACAACTAGAGCCAAACCTCAGCTAG');
 	
-	$seq=str_split($_POST["senquence"]);
-	$min_len=$_POST["min_len"];
-	$max_len=$_POST["max_len"];
-	$p=$_POST["repeat"];
-	$r=$_POST["r"];
+	// $seq=str_split($_POST["senquence"]);
+	// $min_len=$_POST["min_len"];
+	// $max_len=$_POST["max_len"];
+	// $p=$_POST["repeat"];
+	// $r=$_POST["r"];
 	
 	// input over
 	//sample input
-	// $seq=str_split('CAAAAAAAAAAC');
-	// $min_len=3;
-	// $max_len=3;
-	// $p=2;
-	// $r=0.5;
+	$seq=str_split('CAAAAAAAAAAC');
+	$min_len=3;
+	$max_len=4;
+	$p=2;
+	$r=0.5;
 	//sample input over
 
 	$stroage=array();
@@ -77,7 +77,7 @@
 		$repeat=1;
 	}
 	function checkback($test, $p, $r) {
-		$len=count($test);
+		$len=count($p);
 		$count=0;
 		for ($i=0; $i<$len; $i++) {
 			if ($test[$i]==$p[$i]) {
