@@ -23,9 +23,9 @@ function send_quest(){
 	max_len=document.getElementById('max_len').value;
 	repeat=document.getElementById('repeat').value;
 	r=document.getElementById('r').value;
-	if ((senquence.search("[^acgt]")>-1)||(min_len.search("[^0-9]")>-1)||(max_len.search("[^0-9]")>-1)||(repeat.search("[^0-9]")>-1)||(r.search("[^0-9\.]")>-1)) {
+	if ((senquence.search("[^ACGT]")>-1)||(min_len.search("[^0-9]")>-1)||(max_len.search("[^0-9]")>-1)||(repeat.search("[^0-9]")>-1)||(r.search("[^0-9\.]")>-1)) {
 		answer="INPUT ERROR!<br/>";
-		if (senquence.search("[^acgt]")>-1) {
+		if (senquence.search("[^ACGT]")>-1) {
 			answer+="You are entering a DNA senquence, aren't you?<br/>";
 		}
 		if ((min_len.search("[^0-9]")>-1)||(max_len.search("[^0-9]")>-1)||(repeat.search("[^0-9]")>-1)||(r.search("[^0-9\.]")>-1)) {
