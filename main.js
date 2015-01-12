@@ -12,7 +12,6 @@ function random_senquence(){
 	};
 	document.getElementById('senquence').value=print;
 }
-// function devide(str, len){
 
 // 	return string;
 // }
@@ -42,22 +41,29 @@ function send_quest(){
 		if (xmlhttp.readyState==4 && xmlhttp.status==200){
 			backup=xmlhttp.responseText
 			var list=eval('('+backup+')');
-			answer='[start]senquence[end]|repeat|length<br />';
+			// sample format = [{start}]{senquence}[{end}]|{repeat}|{length}
+
+			format=$("#format").val();
+			devide=$("#devide").val();
+			format_copy=format;
+			answer='';
+			format=format.replace(/{/g, '');
+			format=format.replace(/}/g, '');
+			answer+=format;
+			format=format_copy;
+			answer+='<br />'
 			for (key in list) {
 				// answer+=list[key]['senquence'];
 				//format the style of the senquence
-				answer+="[";
-				answer+=list[key]['senquence'].substring(0,list[key]['senquence'].indexOf(','));
-				answer+=']';
-				answer+=list[key]['senquence'].substring(list[key]['senquence'].indexOf(',')+1, list[key]['senquence'].lastIndexOf(','));
-				answer+='[';
-				answer+=list[key]['senquence'].substring(list[key]['senquence'].lastIndexOf(',')+1);
-				answer+=']';
-				answer+="|";
-				answer+=list[key]['repeat'];
-				answer+="|";
-				answer+=list[key]['length'];
+				format=format.replace(/{start}/, list[key]['senquence'].substring(0,list[key]['senquence'].indexOf(',')));
+				format=format.replace(/{senquence}/, list[key]['senquence'].substring(list[key]['senquence'].indexOf(',')+1, list[key]['senquence'].lastIndexOf(',')).replace(/,/g, devide));
+				format=format.replace(/{end}/, list[key]['senquence'].substring(list[key]['senquence'].lastIndexOf(',')+1));
+				format=format.replace(/{repeat}/, list[key]['repeat']);
+				format=format.replace(/{length}/, list[key]['length']);
+				answer+=format;
+				format=format_copy;
 				answer+="<br />";
+				//format end
 			}
 			document.getElementById("answer").innerHTML=answer;
 			$('#step_answer input').css('height', $('#step_answer input').css('height'));

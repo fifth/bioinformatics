@@ -22,28 +22,41 @@
 		</div>
 		<div id="step_param" class="steps" style="top: 100%; background-color: #FFD2A2;">
 			<p style="margin-top: 5%; margin-bottom: 5%;">
-				Now you can custom parameters including minimun repeat length, maximun repeat length, least repeat times and threshold value.
+				Now you can custom parameters including minimun repeat length, maximun repeat length, least repeat times and threshold value.<br />
+				The followings are defult value, if you want to change the pare, just change them.
+				The following paras are:<br />
+				min length of repeat senquence<br />
+				max length of repeat senquence<br />
+				least repeat<br />
+				threshold value
 			</p>
-			<input type="text" id="min_len" class="text" placeholder="set the min length of repeat senquence"/>
+			<input type="text" id="min_len" class="text" placeholder="set the min length of repeat senquence" value="2" />
 			<br />
-			<input type="text" id="max_len" class="text" placeholder="set the max length of repeat senquence"/>
+			<input type="text" id="max_len" class="text" placeholder="set the max length of repeat senquence" value="50" />
 			<br />
-			<input type="text" id="repeat" class="text" placeholder="set the least repeat"/>
+			<input type="text" id="repeat" class="text" placeholder="set the least repeat" value="2" />
 			<br />
-			<input type="text" id="r" class="text" placeholder="set the threshold value"/>
+			<input type="text" id="r" class="text" placeholder="set the threshold value" value="0.5" />
 			<br />
 			<input type="button" class="button" value="former step: input the senquence" style="margin-left: 10%" onclick="scroll_to('0')" />
 			<input type="button" class="button" value="next step: custom the output" onclick="scroll_to('2')" />
 		</div>
 		<div id="step_output" class="steps" style="top: 200%; background-color: #6A94A3;">
 			<p style="margin-top: 5%; margin-bottom: 5%;">
-				Here you can custom the output format you want(unavalibe).
+				Here you can custom the output format you want.<br />
+				Please enter the format in the following text block.<br />
+				Remember, the customable positions are {repeat start position}, {repeat end position}, {number of repeat} and {length of the single repeat}<br />
+				So you can change the order of {start}, {end}, {repeat} and {length}. What's more, you can change the other parts of the output string.<br />
+				If you don't want it to show the other output, just delete them.(e.g. if you just want to get the repeat senquence, left {senquence} only)<br />
+				REMEMBER, DO NOT CHANGE THESE 4 PARTS ABOVE.
 			</p>
+			<input type="text" id="format" class="text" value="[{start}]{senquence}[{end}]|{repeat}|{length}" />
+			<p>And we use <input type="text" id="devide" class="text" value="," style="display: inline; width: 10%; margin-right: 0px; margin-left: 0px;" />to devide the repeats. If you don't want the senquence to be devided, just let it to be blank.</p>
 			<input type="button" class="button" style="margin-left: 10%" value="former step: custom the parameters" onclick="scroll_to('1')" />
 			<input type="button" class="button" value="next step: get the answer" onclick="send_quest(); scroll_to('3')" />
 		</div>
 		<div id="step_answer" class="steps" style="top: 300%; background-color: #B2E28F;">
-			<input type="button" class="button" style="margin-left: 10%" value="export to file" />
+			<input type="button" class="button" style="margin-left: 10%" value="export to file(unavalibe)" />
 			<input type="button" class="button" value="back to first step" onclick="scroll_to('0')" />
 			<p id="answer" style="margin-top: 5%; margin-bottom: 5%; word-break:break-all;"></p>
 		</div>
