@@ -5,6 +5,18 @@
 		<script type="text/javascript" src="jquery-2.1.1.js"></script>
 		<script type="text/javascript" src="jquery.scrollTo.js"></script>
 		<script type="text/javascript" src="main.js"></script>
+		<style type="text/css">
+			#back{
+				text-wrap: none;
+				/*opacity: 0;*/
+				width: 150px;
+				left: -95px;
+			}
+			#back:hover {
+				opacity: 1;
+				left: 0px;
+			}
+		</style>
 	</head>
 	<body>
 		<div id="step_input" class="steps" style="top: 0%; background-color: #E893AA;">
@@ -66,6 +78,6 @@
 			<div class="guide_step" id="guide3" onclick="scroll_to('2')">3</div>
 			<div class="guide_step" id="guide4" onclick="scroll_to('3')">4</div>
 		</div>
-		<a href="./index.html"><div style="width: 200px; height: 50px; background-color: white; position: fixed; top: 0px; left: 0px; line-height: 50px; text-align: center; color: #000000;">back up the index</div></a>
+		<a href="./index.html"><div id='back' style="height: 50px; background-color: white; position: fixed; top: 0px; line-height: 50px; text-align: center; color: #000000;">back to the index</div></a>
 	</body>
 </html>
